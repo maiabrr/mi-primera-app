@@ -1,12 +1,30 @@
 import './App.css';
+import React, {useState} from 'react';
 import PersonCard from './components/PersonCard';
 const App = () => {
+  const [people, setPeople] = useState([
+    { firstName: "Jane", lastName: "Doe", age: 45, hairColor: "Black" },
+    { firstName: "John", lastName: "Smith", age: 88, hairColor: "Brown" },
+    { firstName: "Millard", lastName: "Filmord", age: 50, hairColor: "Brown" },
+    { firstName: "Maria", lastName: "Smith", age: 62, hairColor: "Brown" }
+  ]);
+  const handleBirthday = (index) => {
+    const updatePeople = [...people];
+    updatePeople[index].age +=1;
+    setPeople(updatePeople);
+  }
   return (
-    <div>
-      <PersonCard lastName={"Doe"} firstName={"Jane"} age={45} hairColor={"Black"}/>
-      <PersonCard lastName={"Smith"} firstName={"John"} age={88} hairColor={"Brown"}/>
-      <PersonCard lastName={"Filmord"} firstName={"Millard"} age={50} hairColor={"Brown"}/>
-      <PersonCard lastName={"Smith"} firstName={"Maria"} age={62} hairColor={"Brown"}/>
+    <div className='app'>
+      {people.map((person, index)=>(
+        <PersonCard 
+        lastName={person.lastName}
+        firstName={person.firstName}
+        age={person.age}
+        hairColor={person.hairColor}
+        onBirthday={() => handleBirthday(index)} 
+        />
+      )
+    )}
     </div>
   );
 }
