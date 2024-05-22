@@ -1,11 +1,11 @@
 import React from 'react';
-const PersonCard=({firstName, lastName, age, hairColor, onBirthday}) =>{
+const PersonCard=props =>{
         return(
             <div className='person-card'>
-                <h2>{lastName}, {firstName}</h2>
-                <p>Age: {age}</p>
-                <p>Hair Color: {hairColor}</p>
-                <button onClick={onBirthday}>Birthday Button for {firstName} {lastName}</button>
+                <h2>{props.lastName}, {props.firstName}</h2>
+                <p>Age: {props.age}</p>
+                <p>Hair Color: {props.hairColor}</p>
+                <button onClick={props.onBirthday}>Birthday Button for {props.firstName} {props.lastName}</button>
             </div>
         );
 }
